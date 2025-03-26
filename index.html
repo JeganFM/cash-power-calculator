@@ -142,7 +142,7 @@
         return;
       }
       const monthlyCost = usage * 30 * dalasiPerKwh;
-      result.innerHTML = `<strong>Estimated Monthly Cost:</strong> ${monthlyCost.toFixed(2)} Dalasi`;
+      result.innerHTML = `<strong>Estimated Monthly Cost:</strong> ${monthlyCost.toFixed(2)} Dalasi<br><em>(Formula: ${usage} kWh/day × 30 days × 13.85 = ${monthlyCost.toFixed(2)} Dalasi)</em><br><small>Note: 1 kWh = 13.85 Dalasi</small>`;
 
       const days = Array.from({ length: 30 }, (_, i) => i + 1);
       const costs = days.map(day => usage * dalasiPerKwh * day);
@@ -188,7 +188,7 @@
         default: days = 0;
       }
       const cost = dailyUsage * days * dalasiPerKwh;
-      result.innerHTML = `<strong>Total Cost:</strong> ${cost.toFixed(2)} Dalasi for ${duration} ${period}`;
+      result.innerHTML = `<strong>Total Cost:</strong> ${cost.toFixed(2)} Dalasi for ${duration} ${period}<br><em>(Formula: ${dailyUsage} kWh/day × ${days} days × 13.85 = ${cost.toFixed(2)} Dalasi)</em><br><small>Note: 1 kWh = 13.85 Dalasi</small>`;
     }
 
     function estimateFromAmount() {
@@ -201,7 +201,7 @@
       }
       const kWh = amount / dalasiPerKwh;
       const daily = kWh / days;
-      result.innerHTML = `<strong>Total kWh:</strong> ${kWh.toFixed(2)} kWh<br /><strong>Daily Usage:</strong> ${daily.toFixed(2)} kWh/day`;
+      result.innerHTML = `<strong>Total kWh:</strong> ${kWh.toFixed(2)} kWh<br /><strong>Daily Usage:</strong> ${daily.toFixed(2)} kWh/day<br><em>(Formula: ${amount} ÷ 13.85 = ${kWh.toFixed(2)} kWh)</em><br><small>Note: 1 kWh = 13.85 Dalasi</small>`;
     }
 
     function estimateMergedDuration() {
@@ -218,11 +218,11 @@
       if (unit === "kwh") {
         const totalKwh = total / dalasiPerKwh;
         const estimatedDays = totalKwh / usageInput;
-        result.innerHTML = `<strong>Total kWh:</strong> ${totalKwh.toFixed(2)} kWh<br /><strong>Estimated Duration:</strong> ${estimatedDays.toFixed(1)} days`;
+        result.innerHTML = `<strong>Total kWh:</strong> ${totalKwh.toFixed(2)} kWh<br /><strong>Estimated Duration:</strong> ${estimatedDays.toFixed(1)} days<br><em>(Formula: ${total} ÷ 13.85 = ${totalKwh.toFixed(2)} kWh)</em><br><small>Note: 1 kWh = 13.85 Dalasi</small>`;
       } else {
         const estimatedDays = total / usageInput;
         const estimatedKwh = total / dalasiPerKwh;
-        result.innerHTML = `<strong>Estimated Duration:</strong> ${estimatedDays.toFixed(1)} days<br /><strong>Total kWh:</strong> ${estimatedKwh.toFixed(2)} kWh`;
+        result.innerHTML = `<strong>Estimated Duration:</strong> ${estimatedDays.toFixed(1)} days<br /><strong>Total kWh:</strong> ${estimatedKwh.toFixed(2)} kWh<br><em>(Formula: ${total} ÷ ${usageInput} = ${estimatedDays.toFixed(1)} days)</em><br><small>Note: 1 kWh = 13.85 Dalasi</small>`;
       }
     }
 
@@ -239,7 +239,7 @@
 
       const usage = end - start;
       const daily = usage / days;
-      result.innerHTML = `<strong>Total Usage:</strong> ${usage.toFixed(2)} kWh<br /><strong>Daily Usage:</strong> ${daily.toFixed(2)} kWh/day`;
+      result.innerHTML = `<strong>Total Usage:</strong> ${usage.toFixed(2)} kWh<br /><strong>Daily Usage:</strong> ${daily.toFixed(2)} kWh/day<br><em>(Formula: (${end} - ${start}) ÷ ${days} = ${daily.toFixed(2)} kWh/day)</em><br><small>Note: 1 kWh = 13.85 Dalasi</small>`;
     }
   </script>
 </body>
